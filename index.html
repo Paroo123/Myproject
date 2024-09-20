@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feedback Collection System</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="App">
+      <h2>Feedback Collector</h2>
+      <form id="feedbackForm" class="feedback-form">
+        <input type="text" id="name" placeholder="Enter your name" required />
+        <textarea
+          id="feedback"
+          placeholder="Enter your feedback here..."
+          rows="4"
+          cols="40"
+          required
+        ></textarea>
+        <div class="rating-section">
+          <label for="rating">Rating:</label>
+          <select id="rating">
+            <option value="5">5 - Excellent</option>
+            <option value="4">4 - Good</option>
+            <option value="3">3 - Average</option>
+            <option value="2">2 - Poor</option>
+            <option value="1">1 - Very poor</option>
+          </select>
+        </div>
+        <button type="submit">Submit Feedback</button>
+      </form>
+    </div>
+    <script src="script.js">
+        document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const feedback = document.getElementById('feedback').value.trim();
+        const rating = document.getElementById('rating').value;
+        if (name && feedback) {
+          console.log(`Name: ${name}, Rating: ${rating}, Feedback: ${feedback}`);
+          document.getElementById('name').value = '';
+          document.getElementById('feedback').value = '';
+          document.getElementById('rating').value = '5';
+        }
+      });
+    </script>
+  </body>
+</html>
